@@ -1,6 +1,13 @@
 <h1>group show</h1>
 <%= @group.name %>
 <%= @group.introduction %>
+<% @group.users.each do |user| %>
+  <%= user.name %>
+<% end %>
 <% if @group.owner_id == current_user.id %>
   <%= link_to "Edit", edit_group_path(@group.id) %>
+<% elsif @group.users.include?(current_user) %>
+  <%= link_to "Leave this group", group_group_user_path(@group.id), method: :delete %>
+<% else %>
+  <%= link_to "Join this group", group_group_users_path(@group.id), method: :post %>
 <% end %>
