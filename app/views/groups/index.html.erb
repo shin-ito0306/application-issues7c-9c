@@ -2,7 +2,9 @@
 <% @groups.each do |group| %>
   <%= group.id %><br>
   <%= group.owner_id %><br>
-  <%= group.name %><br>
+  <%= link_to "#{group.name}", group_path(group.id) %><br>
   <%= group.introduction %><br>
-  <%= link_to "Edit", edit_group_path(group.id) %><br>
+  <% if group.owner_id == current_user.id %>
+    <%= link_to "Edit", edit_group_path(group.id) %><br>
+    <% end %>
 <% end %>
