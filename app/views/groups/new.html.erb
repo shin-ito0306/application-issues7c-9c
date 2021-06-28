@@ -1,0 +1,11 @@
+<h1>Create Group</h1>
+<%= form_with model:@group, local:true do |f| %>
+  <%= f.label :name "グループ名" %>
+  <%= f.text_field :name %>
+  
+  <%= f.label :introduction "紹介文" %>
+  <%= f.text_area :introduction %>
+  
+  <%= f.label :image_id %>
+  <%=
+  
